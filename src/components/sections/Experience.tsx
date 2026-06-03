@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { EXPERIENCE } from "../../portfolio-data";
-import { ExternalLink } from "lucide-react";
-export function Experience() {
-  const [open, setOpen] = useState(false);
+import { EXPERIENCE } from "../../portfolio-data"; 
+export function Experience() { 
   const [selectedCertificate, setSelectedCertificate] = useState<string | null>(null);
   return (
     <section id="experience" className="relative px-6 py-32 sm:py-40">
