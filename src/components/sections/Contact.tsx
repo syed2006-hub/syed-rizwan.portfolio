@@ -56,7 +56,7 @@ export function Contact() {
               </span>
             </h2>
             <p className="mt-5 max-w-md text-base leading-relaxed text-muted">
-              Open to freelance, internships, and full-time roles. I usually reply
+              Open to freelance , internships, and full-time roles. I usually reply
               within a day.
             </p>
 
