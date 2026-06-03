@@ -8,8 +8,7 @@ import { SocialIcon } from '../ui/SocialIcon'
 type FormStatus = 'idle' | 'sending' | 'success' | 'error'
 
 export function Contact() {
-  const [status, setStatus] = useState<FormStatus>('idle')
-  const [focused, setFocused] = useState<string | null>(null)
+  const [status, setStatus] = useState<FormStatus>('idle') 
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
