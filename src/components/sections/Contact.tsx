@@ -48,7 +48,7 @@ const handleSubmit = async (e: FormEvent) => {
       <div className="mx-auto max-w-6xl">
         <p className="section-index">05 — Contact</p>
         <div className="mt-4 grid gap-16 lg:grid-cols-2">
-          <div>
+          <div className="lg:pt-10 xl:pt-16">
            <h2
               id="contact-heading"
               className="font-display text-5xl md:text-6xl lg:text-[70px] font-black tracking-tighter leading-[0.85] text-ink"
@@ -109,7 +109,7 @@ const handleSubmit = async (e: FormEvent) => {
       </div>
 
       <span className="text-[10px] uppercase tracking-[0.3em] text-muted">
-        contact.tsx
+        contact me
       </span>
     </div>
 
@@ -118,34 +118,67 @@ const handleSubmit = async (e: FormEvent) => {
       onSubmit={handleSubmit}
       className="space-y-6 p-6 md:p-10"
     >
-      {fields.map((field) => (
-        <div key={field.id} className="space-y-2">
-          <label
-            htmlFor={field.id}
-            className="ml-1 text-[10px] font-bold uppercase tracking-[0.25em] text-muted"
-          >
-            {field.label}
-          </label>
+      {fields.map((field, index) => {
+  const isPair =
+    fields[index]?.id === "name" &&
+    fields[index + 1]?.id === "email"
 
-          {field.type === 'textarea' ? (
-            <textarea
-              id={field.id}
-              name={field.id}
-              required
-              rows={5}
-              className="w-full resize-none rounded-2xl border border-black/10 bg-black/[0.02] px-5 py-4 text-sm text-ink outline-none transition-all focus:border-black/20 focus:bg-white"
-            />
-          ) : (
-            <input
-              id={field.id}
-              name={field.id}
-              type={field.type}
-              required
-              className="w-full rounded-2xl border border-black/10 bg-black/[0.02] px-5 py-4 text-sm text-ink outline-none transition-all focus:border-black/20 focus:bg-white"
-            />
-          )}
+  if (isPair) {
+    return (
+      <div key="name-email" className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        
+        {/* NAME */}
+        <div className="space-y-2">
+          <label className="ml-1 text-[10px] font-bold uppercase tracking-[0.25em] text-muted">
+            Name
+          </label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            required
+            className="w-full rounded-lg border border-black/10 bg-black/[0.02] px-5 py-4 text-sm text-ink outline-none transition-all focus:border-black/20 focus:bg-white"
+          />
         </div>
-      ))}
+
+        {/* EMAIL */}
+        <div className="space-y-2">
+          <label className="ml-1 text-[10px] font-bold uppercase tracking-[0.25em] text-muted">
+            Email
+          </label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            className="w-full rounded-lg border border-black/10 bg-black/[0.02] px-5 py-4 text-sm text-ink outline-none transition-all focus:border-black/20 focus:bg-white"
+          />
+        </div>
+      </div>
+    )
+  }
+
+  // MESSAGE FIELD (unchanged)
+  if (field.type === "textarea") {
+    return (
+      <div key={field.id} className="space-y-2">
+        <label className="ml-1 text-[10px] font-bold uppercase tracking-[0.25em] text-muted">
+          {field.label}
+        </label>
+
+        <textarea
+          id={field.id}
+          name={field.id}
+          required
+          rows={5}
+          className="w-full rounded-lg border border-black/10 bg-black/[0.02] px-5 py-4 text-sm text-ink outline-none transition-all focus:border-black/20 focus:bg-white"
+        />
+      </div>
+    )
+  }
+
+  return null
+})}
 
       <button
         type="submit"
