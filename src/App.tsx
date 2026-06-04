@@ -25,7 +25,6 @@ function App() {
 
   return (
     <>
-      <Background />
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[300] focus:rounded-lg focus:bg-ink focus:px-4 focus:py-2 focus:text-cream"
@@ -44,6 +43,8 @@ function App() {
         <Contact />
       </main>
       <Footer />
+      <Background />
+
     </>
   )
 }

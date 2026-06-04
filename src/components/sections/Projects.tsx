@@ -9,14 +9,16 @@ import type { JSX } from "react/jsx-runtime"
 gsap.registerPlugin(ScrollTrigger)
 
 interface Project {
+
   title: string
   desc: string
   img: string
   url: string
   type: "web" | "download"
   isVideo?: boolean
+  gradient: string
   stack?: string[] // Kept flexible in case your data includes them
-  stats?: { label: string; value: string }[]
+  stats: { label: string; value: string }[]
 }
 
 export default function Projects(): JSX.Element {
@@ -156,39 +158,59 @@ export default function Projects(): JSX.Element {
                         </div>
                       )}
                     </div>
+                  {/* bottom row: stats + CTA */}
+<div className="flex items-end justify-between gap-6 mb-6">
+  
+  {/* stats */}
+  <div className="flex gap-6">
+    {p.stats.map((s) => (
+      <div key={s.label}>
+        <p className="font-semibold text-sm">{s.value}</p>
+        <p className="text-[10px] uppercase text-neutral-400">
+          {s.label}
+        </p>
+      </div>
+    ))}
+  </div>
 
-                    {/* CTA Button Implementation */}
-                    <div>
-                      <a
-                        href={p.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group/btn relative inline-flex items-center justify-center rounded-full px-7 py-3.5 text-sm font-medium text-white transition-all duration-300 shadow-md shadow-neutral-900/10 overflow-hidden"
-                      >
-                        {/* Action Background Gradient Contextualized by Type */}
-                        <span className={`absolute inset-0 rounded-full bg-gradient-to-r transition-all duration-300 group-hover/btn:scale-105 ${
-                          p.type === "web" 
-                            ? "from-[#111827] via-[#2a3241] to-[#111827]" 
-                            : "from-cyan-600 via-sky-600 to-blue-600"
-                        }`} />
-                        
-                        {/* Dynamic Button Internal Glass Flare */}
-                        <span className="absolute inset-0 rounded-full bg-white/5 backdrop-blur-sm opacity-100" />
+  {/* CTA Button */}
+  <div>
+    <a
+      href={p.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group/btn relative inline-flex items-center justify-center rounded-full px-7 py-3.5 text-sm font-medium text-white transition-all duration-300 shadow-md shadow-neutral-900/10 overflow-hidden"
+    >
+      {/* Action Background Gradient Contextualized by Type */}
+      <span
+        className={`absolute inset-0 rounded-full bg-gradient-to-r transition-all duration-300 group-hover/btn:scale-105 ${p.gradient}`}
+      />
 
-                        {/* Interactive Text */}
-                        <span className="relative flex items-center gap-2 tracking-wide">
-                          {p.type === "web" ? "Experience App" : "Download App"}
-                          <svg 
-                            className="w-4 h-4 transform transition-transform duration-300 group-hover/btn:translate-x-1" 
-                            fill="none" 
-                            stroke="currentColor" 
-                            viewBox="0 0 24 24"
-                          >
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                          </svg>
-                        </span>
-                      </a>
-                    </div>
+      {/* Dynamic Glass Layer */}
+      <span className="absolute inset-0 rounded-full bg-white/5 backdrop-blur-sm opacity-100" />
+
+      {/* Text */}
+      <span className="relative flex items-center gap-2 tracking-wide">
+        {p.type === "web" ? "ViewApp" : "GetApp"}
+
+        <svg
+          className="w-4 h-4 transform transition-transform duration-300 group-hover/btn:translate-x-1"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2.5"
+            d="M14 5l7 7m0 0l-7 7m7-7H3"
+          />
+        </svg>
+      </span>
+    </a>
+  </div>
+
+</div>
                   </div>
 
                 </div>

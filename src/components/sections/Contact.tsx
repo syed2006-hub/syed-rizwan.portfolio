@@ -1,4 +1,4 @@
-import { useState ,useEffect } from 'react' 
+import { useState ,useEffect,useRef, type FormEvent } from 'react' 
 import { motion } from 'framer-motion'
 import emailjs from '@emailjs/browser'
 import { socialLinks } from '../../data/social'
@@ -13,27 +13,30 @@ export function Contact() {
   emailjs.init("dU6mTsrEG6FJTDp7S")
 }, [])
 
-const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+
+const formRef = useRef<HTMLFormElement>(null)
+
+const handleSubmit = async (e: FormEvent) => {
   e.preventDefault()
   setStatus("sending")
 
+  if (!formRef.current) return
+
   try {
-    const result = await emailjs.sendForm(
+    await emailjs.sendForm(
       "service_6mafrpl",
       "template_ndn82vi",
-      e.currentTarget,
-      "dU6mTsrEG6FJTDp7S"
+      formRef.current,
+      { publicKey: "dU6mTsrEG6FJTDp7S" }
     )
 
-    console.log("SUCCESS:", result.text)
     setStatus("success")
-    e.currentTarget.reset()
+    formRef.current.reset()
   } catch (err) {
     console.error("EMAIL ERROR:", err)
     setStatus("error")
   }
 }
-
   const fields = [
     { id: 'name', label: 'Name', type: 'text' as const },
     { id: 'email', label: 'Email', type: 'email' as const },
@@ -111,6 +114,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     </div>
 
     <form
+    ref={formRef}
       onSubmit={handleSubmit}
       className="space-y-6 p-6 md:p-10"
     >
