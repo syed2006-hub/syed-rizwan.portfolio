@@ -13,29 +13,28 @@ export const ROLES = [
 
 export const STATS = [
   { label: "Years building", value: 3, suffix: "+" },
-  { label: "Shipped projects", value: 24, suffix: "" },
-  { label: "Technologies", value: 16, suffix: "" },
-  { label: "Cups of coffee", value: 1240, suffix: "" },
+  { label: "Shipped projects", value: 15, suffix: "+" },
+  { label: "Technologies", value: 16, suffix: "" }, 
 ];
 
 export const TIMELINE = [
   {
-    year: "2022",
+    year: "2023",
     title: "First lines of code",
     body: "Discovered programming through a curiosity for design systems and product craft.",
   },
   {
-    year: "2023",
+    year: "2024",
     title: "Flutter & Firebase",
     body: "Shipped my first cross-platform apps. Fell in love with declarative UI and motion.",
   },
   {
-    year: "2024",
+    year: "2025",
     title: "Full-stack with MERN",
     body: "Expanded into the web — React, Node, Mongo. Built real products end-to-end.",
   },
   {
-    year: "2025",
+    year: "2025 -2026",
     title: "Internships & hackathons",
     body: "Joined IBM and Altruisty as an intern; won recognition at national hackathons.",
   },
@@ -87,121 +86,7 @@ export type Project = {
   code?: string;
   stats: { label: string; value: string }[];
 };
-
-export const PROJECTS: Project[] = [
-  {
-    name: "Club Zen",
-    tagline: "Mindful community app",
-    description:
-      "A serene social space for meditation groups — sessions, journals, and quiet check-ins.",
-    stack: ["Flutter", "Dart", "Firebase", "Riverpod"],
-    category: "Mobile",
-    gradient: "linear-gradient(135deg,#1a1a1a,#3a3a3a 60%,#0a0a0a)",
-    accent: "#e8e4dd",
-    stats: [
-      { label: "Users", value: "2.4k" },
-      { label: "Rating", value: "4.8" },
-    ],
-  },
-  {
-    name: "PayrollPro",
-    tagline: "Payroll, simplified",
-    description:
-      "An end-to-end payroll platform with payslip generation, tax math, and audit history.",
-    stack: ["React", "Node.js", "Express", "MongoDB"],
-    category: "Web · SaaS",
-    gradient: "linear-gradient(135deg,#0f1b3d,#1e3a5f 55%,#0a1530)",
-    accent: "#cfe0ff",
-    stats: [
-      { label: "Companies", value: "38" },
-      { label: "Payslips", value: "12k+" },
-    ],
-  },
-  {
-    name: "C Cube",
-    tagline: "Learn C, visually",
-    description:
-      "Interactive lessons that animate memory, pointers and recursion as you scroll.",
-    stack: ["Next.js", "TypeScript", "GSAP", "Tailwind"],
-    category: "Edu · Web",
-    gradient: "linear-gradient(135deg,#2b1a0d,#5c3a1c 60%,#1a0f06)",
-    accent: "#f1c98b",
-    stats: [
-      { label: "Lessons", value: "42" },
-      { label: "Learners", value: "5k" },
-    ],
-  },
-  {
-    name: "Trendera",
-    tagline: "Fashion discovery",
-    description:
-      "A fashion discovery feed with personalised drops and editorial storytelling.",
-    stack: ["React", "Node.js", "MongoDB", "Tailwind"],
-    category: "E-commerce",
-    gradient: "linear-gradient(135deg,#3a0d1f,#7a2244 60%,#1a0510)",
-    accent: "#ffd1de",
-    stats: [
-      { label: "Brands", value: "120" },
-      { label: "Drops/wk", value: "30" },
-    ],
-  },
-  {
-    name: "Logo Studio",
-    tagline: "AI-assisted brand marks",
-    description:
-      "A canvas-based studio for crafting refined logo lockups with smart spacing and grids.",
-    stack: ["Next.js", "TypeScript", "Canvas", "Tailwind"],
-    category: "Design · Tool",
-    gradient: "linear-gradient(135deg,#0d2b2a,#1f5a55 60%,#06181a)",
-    accent: "#aef2e6",
-    stats: [
-      { label: "Marks", value: "780" },
-      { label: "Studios", value: "12" },
-    ],
-  },
-  {
-    name: "Vibrant Dance Studio",
-    tagline: "Studio + class booking",
-    description:
-      "A cinematic site for a dance studio with class schedules, reels, and online enrolment.",
-    stack: ["React", "Firebase", "Framer Motion"],
-    category: "Marketing · Web",
-    gradient: "linear-gradient(135deg,#2d0a3a,#7c2bc4 55%,#11041a)",
-    accent: "#e8c7ff",
-    stats: [
-      { label: "Classes", value: "60+" },
-      { label: "Bookings", value: "3.1k" },
-    ],
-  },
-  {
-    name: "SkyCast",
-    tagline: "Weather, beautifully",
-    description:
-      "A minimalist weather app with depth-based glass cards and ambient gradients.",
-    stack: ["Flutter", "Dart", "OpenWeather API"],
-    category: "Mobile",
-    gradient: "linear-gradient(135deg,#0a1b2b,#1d4b7a 60%,#04101c)",
-    accent: "#bde2ff",
-    stats: [
-      { label: "Cities", value: "200+" },
-      { label: "Updates/h", value: "60" },
-    ],
-  },
-  {
-    name: "Tic Tac Toe",
-    tagline: "AI opponent · Pure JS",
-    description:
-      "A polished take on a classic — minimax AI, haptic feedback, and elegant motion.",
-    stack: ["JavaScript", "HTML", "CSS"],
-    category: "Game · Web",
-    gradient: "linear-gradient(135deg,#1c1c1c,#3a3a3a 60%,#0a0a0a)",
-    accent: "#f1efea",
-    stats: [
-      { label: "Win rate", value: "72%" },
-      { label: "Modes", value: "3" },
-    ],
-  },
-];
+ 
 
 export type Skill = { name: string; category: "Mobile" | "Web" | "Tooling" | "DevOps" | "Design"; level: number };
 
@@ -219,7 +104,7 @@ export const SKILLS: Skill[] = [
   { name: "GSAP", category: "Tooling", level: 82 },
   { name: "Git", category: "Tooling", level: 90 },
   { name: "GitHub", category: "Tooling", level: 90 },
-    { name: "Vercel", category: "DevOps", level: 94 },
+  { name: "Vercel", category: "DevOps", level: 94 },
   { name: "GitHub Pages", category: "DevOps", level: 88 },
   { name: "TanStack", category: "DevOps", level: 83 },
   { name: "Render", category: "DevOps", level: 85 },

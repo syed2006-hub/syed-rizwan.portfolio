@@ -41,9 +41,4 @@ export const experiences: ExperienceItem[] = [
   },
 ]
 
-export const certificates = [
-  { id: 'ibm-cert', title: 'IBM Professional Certificate', issuer: 'IBM', year: '2024' },
-  { id: 'flutter-cert', title: 'Flutter Development', issuer: 'Google', year: '2023' },
-  { id: 'mern-cert', title: 'MERN Stack Specialization', issuer: 'Coursera', year: '2023' },
-  { id: 'ui-cert', title: 'UI/UX Design Fundamentals', issuer: 'Figma', year: '2023' },
-]
+ 

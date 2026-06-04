@@ -6,7 +6,7 @@ const SkillSphere = lazy(() =>
   import("../three/SkillsSphere").then((m) => ({ default: m.SkillSphere }))
 );
 
-const CATEGORIES: Skill["category"][] = ["Mobile", "Web", "Tooling", "Design"];
+const CATEGORIES: Skill["category"][] = ["Mobile", "Web", "Tooling","DevOps", "Design"];
 
 export function Skills() {
   const [cat, setCat] = useState<Skill["category"]>("Web");

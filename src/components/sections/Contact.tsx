@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import type { FormEvent } from 'react'
+import { useState ,useEffect } from 'react' 
 import { motion } from 'framer-motion'
 import emailjs from '@emailjs/browser'
 import { socialLinks } from '../../data/social'
@@ -10,28 +9,30 @@ type FormStatus = 'idle' | 'sending' | 'success' | 'error'
 export function Contact() {
   const [status, setStatus] = useState<FormStatus>('idle') 
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setStatus('sending')
+ useEffect(() => {
+  emailjs.init("dU6mTsrEG6FJTDp7S")
+}, [])
 
-    const form = e.currentTarget
-    const serviceId = "service_6mafrpl"
-    const templateId = "template_ndn82vi"
-    const publicKey = "dU6mTsrEG6FJTDp7S"
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault()
+  setStatus("sending")
 
-    if (!serviceId || !templateId || !publicKey) {
-      setStatus('error')
-      return
-    }
+  try {
+    const result = await emailjs.sendForm(
+      "service_6mafrpl",
+      "template_ndn82vi",
+      e.currentTarget,
+      "dU6mTsrEG6FJTDp7S"
+    )
 
-    try {
-      await emailjs.sendForm(serviceId, templateId, form, { publicKey })
-      setStatus('success')
-      form.reset()
-    } catch {
-      setStatus('error')
-    }
+    console.log("SUCCESS:", result.text)
+    setStatus("success")
+    e.currentTarget.reset()
+  } catch (err) {
+    console.error("EMAIL ERROR:", err)
+    setStatus("error")
   }
+}
 
   const fields = [
     { id: 'name', label: 'Name', type: 'text' as const },
